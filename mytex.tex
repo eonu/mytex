@@ -1,0 +1,120 @@
+\makeatletter
+\newcommand*{\declarecommand}{%
+  \@star@or@long\declare@command
+}
+\newcommand*{\declare@command}[1]{%
+  \provide@command{#1}{}%
+  \renew@command{#1}%
+}
+\makeatother
+
+% Display
+\declarecommand{\t}{\text}
+\declarecommand{\ds}{\displaystyle}
+\declarecommand{\ob}{\overbrace}
+\declarecommand{\ub}{\underbrace}
+\declarecommand{\code}{\texttt}
+\declarecommand{\stack}[2]{\substack{#1 \\ #2}}
+\declarecommand{\smallstack}{\stackrel}
+\declarecommand{\stackt}[2]{\stack{\t{#1}}{\t{#2}}}
+
+% Colours
+\declarecommand{\red}[1]{\textcolor{red}{#1}}
+\declarecommand{\redt}[1]{\textcolor{red}{\t{#1}}}
+\declarecommand{\blue}[1]{\textcolor{blue}{#1}}
+\declarecommand{\bluet}[1]{\textcolor{blue}{\t{#1}}}
+\declarecommand{\green}[1]{\textcolor{green}{#1}}
+\declarecommand{\greent}[1]{\textcolor{green}{\t{#1}}}
+
+% Typefaces/Text-styles
+\declarecommand{\mc}{\mathcal}
+\declarecommand{\mf}{\mathfrak}
+\declarecommand{\b}{\mathbf}
+\declarecommand{\bs}{\boldsymbol}
+
+% Fractions
+\declarecommand{\f}{\frac}
+
+% Positioning
+\declarecommand{\l}{\left}
+\declarecommand{\m}{\middle}
+\declarecommand{\r}{\right}
+
+% Logic
+\declarecommand{\n}{\not}
+\declarecommand{\eq}{\equiv}
+\declarecommand{\xor}{\oplus}
+
+% Sets
+\declarecommand{\fa}{\forall}
+\declarecommand{\te}{\exists}
+\declarecommand{\empty}{\varnothing}
+\declarecommand{\set}[1]{\l\lbrace#1\r\rbrace}
+\declarecommand{\setb}[2]{\l\lbrace#1\ \m| \ #2\r\rbrace}
+\declarecommand{\bb}{\mathbb}
+\declarecommand{\R}{\bb{R}}
+\declarecommand{\N}{\bb{N}}
+\declarecommand{\Z}{\bb{Z}}
+\declarecommand{\Q}{\bb{Q}}
+\declarecommand{\C}{\bb{C}}
+
+% Derivatives
+\declarecommand{\d}[1]{\mathrm{d}#1}
+\declarecommand{\deriv}[2]{\f{\d{#1}}{\d{#2}}}
+\declarecommand{\pderiv}[2]{\f{\partial #1}{\partial #2}}
+
+% Sums/Integrals
+\declarecommand{\s}[3]{\sum_{#1}^{#2}#3}
+\declarecommand{\i}[4]{\int_{#1}^{#2}#3\ \d{#4}}
+
+% Probability
+\declarecommand{\p}[2][{}]{\bb{P}_{#1}\!\l(#2\r)}
+\declarecommand{\cp}[3][{}]{\p[#1]{#2\ \m|\ #3}}
+\declarecommand{\jp}[3][{}]{\p[#1]{#2, #3}}
+\declarecommand{\pe}[2][{}]{\hat{\bb{P}}_{#1}\!\l(#2\r)}
+\declarecommand{\cpe}[3][{}]{\pe[#1]{#2\ \m|\ #3}}
+\declarecommand{\jpe}[3][{}]{\pe[#1]{#2, #3}}
+\declarecommand{\e}[2][{}]{\bb{E}_{#1}\!\l[#2\r]}
+\declarecommand{\var}[1]{\t{Var}\!\l[#1\r]}
+\declarecommand{\sd}[1]{\t{SD}\!\l[#1\r]}
+\declarecommand{\cov}[2]{\t{Cov}\!\l[#1,#2\r]}
+% Probability distributions
+\declarecommand{\pd}[2][{}]{p_{#1}\!\l(#2\r)}
+\declarecommand{\cpd}[3][{}]{\p[#1]{#2\ \m|\ #3}}
+\declarecommand{\jpd}[3][{}]{\p[#1]{#2, #3}}
+\declarecommand{\pde}[2][{}]{\hat{p}_{#1}\!\l(#2\r)}
+\declarecommand{\cpde}[3][{}]{\pde[#1]{#2\ \m|\ #3}}
+\declarecommand{\jpde}[3][{}]{\pde[#1]{#2, #3}}
+\declarecommand{\nvar}[2]{\mc{N}\!\l(#1, #2\r)}
+\declarecommand{\ndist}[3]{\nvar{#1;#2}{#3}}
+
+% Binomials
+\declarecommand{\ch}{\binom}
+\declarecommand{\pbin}[3][{}]{\l(#2 + #3\r)^#1}
+\declarecommand{\mbin}[3][{}]{\l(#2 - #3\r)^#1}
+
+% Linear Algebra
+\declarecommand{\T}{\mathsf{T}}
+\declarecommand{\seq}[4][,]{#2_{#3}#1 \ldots #1 #2_{#4}}
+\declarecommand{\rowv}[3]{\l(\seq{#1}{#2}{#3}\r)}
+\declarecommand{\colv}[3]{\rowv{#1}{#2}{#3}^\T}
+\declarecommand{\sqbmat}[3][{}]{
+    \begin{bmatrix}
+		#2_{1{#1}1} & #2_{1{#1}2} & \cdots & #2_{1{#1}j} & \cdots & #2_{1{#1}#3} \\
+		#2_{2{#1}1} & #2_{2{#1}2} & \cdots & #2_{2{#1}j} & \cdots & #2_{2{#1}#3} \\
+		\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+		#2_{i{#1}1} & #2_{i{#1}2} & \cdots & #2_{i{#1}j} & \cdots & #2_{i{#1}#3} \\
+		\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+		#2_{#3{#1}1} & #2_{#3{#1}2} & \cdots & #2_{#3{#1}j} & \cdots & #2_{#3{#1}#3} \\
+	\end{bmatrix}
+}
+\declarecommand{\sqpmat}[3][{}]{
+    \begin{pmatrix}
+		#2_{1{#1}1} & #2_{1{#1}2} & \cdots & #2_{1{#1}j} & \cdots & #2_{1{#1}#3} \\
+		#2_{2{#1}1} & #2_{2{#1}2} & \cdots & #2_{2{#1}j} & \cdots & #2_{2{#1}#3} \\
+		\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+		#2_{i{#1}1} & #2_{i{#1}2} & \cdots & #2_{i{#1}j} & \cdots & #2_{i{#1}#3} \\
+		\vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+		#2_{#3{#1}1} & #2_{#3{#1}2} & \cdots & #2_{#3{#1}j} & \cdots & #2_{#3{#1}#3} \\
+	\end{pmatrix}
+}
