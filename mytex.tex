@@ -32,8 +32,9 @@
 \declarecommand{\b}{\mathbf}
 \declarecommand{\bs}{\boldsymbol}
 
-% Fractions
+% Fractions and multiplication
 \declarecommand{\f}{\frac}
+\declarecommand{\x}{\times}
 
 % Positioning
 \declarecommand{\l}{\left}
@@ -60,7 +61,7 @@
 
 % Derivatives
 \declarecommand{\d}[1]{\mathrm{d}#1}
-\declarecommand{\deriv}[2]{\f{\d{#1}}{\d{#2}}}
+\declarecommand{\deriv}[3][{}]{\f{\d{^{#1}#2}}{\d{#3^{#1}}}}
 \declarecommand{\pderiv}[2]{\f{\partial #1}{\partial #2}}
 
 % Sums/Integrals
@@ -75,9 +76,11 @@
 \declarecommand{\cpe}[3][{}]{\pe[#1]{#2\ \m|\ #3}}
 \declarecommand{\jpe}[3][{}]{\pe[#1]{#2, #3}}
 \declarecommand{\e}[2][{}]{\bb{E}_{#1}\!\l[#2\r]}
-\declarecommand{\var}[1]{\t{Var}\!\l[#1\r]}
-\declarecommand{\sd}[1]{\t{SD}\!\l[#1\r]}
-\declarecommand{\cov}[2]{\t{Cov}\!\l[#1,#2\r]}
+\declarecommand{\ce}[3][{}]{\e[#1]{#2\ \m|\ #3}}
+\declarecommand{\var}[1]{\mathrm{Var}\!\l[#1\r]}
+\declarecommand{\cvar}[2]{\var{#1\ \m|\ #2}}
+\declarecommand{\sd}[1]{\mathrm{SD}\!\l[#1\r]}
+\declarecommand{\cov}[2]{\mathrm{Cov}\!\l[#1,#2\r]}
 % Probability distributions
 \declarecommand{\pd}[2][{}]{p_{#1}\!\l(#2\r)}
 \declarecommand{\cpd}[3][{}]{\pd[#1]{#2\ \m|\ #3}}
@@ -90,8 +93,8 @@
 
 % Binomials
 \declarecommand{\ch}{\binom}
-\declarecommand{\pbin}[3][{}]{\l(#2 + #3\r)^#1}
-\declarecommand{\mbin}[3][{}]{\l(#2 - #3\r)^#1}
+\declarecommand{\pbin}[3][{}]{\l(#2 + #3\r)^{#1}}
+\declarecommand{\mbin}[3][{}]{\l(#2 - #3\r)^{#1}}
 
 % Linear Algebra
 \declarecommand{\T}{\mathsf{T}}
